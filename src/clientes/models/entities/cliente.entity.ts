@@ -19,7 +19,7 @@ export class Cliente {
   @Column('varchar', { nullable: true, length: 255 })
   apellido: string;
 
-  @Column('varchar', { nullable: true, length: 255 })
+  @Column('varchar', { name: 'razon_social', nullable: true, length: 255 })
   razonSocial: string;
 
   @Column('varchar', { nullable: true, length: 255 })
