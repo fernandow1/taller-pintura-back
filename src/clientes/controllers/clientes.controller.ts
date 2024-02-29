@@ -3,6 +3,7 @@ import { ClientesService } from '../services/clientes.service';
 import { PageParamDTO } from 'src/shared/models/dtos/page-param.dto';
 import { ResultsQueryDTO } from 'src/shared/models/dtos/results-query.dto';
 import { Cliente } from '../models/entities/cliente.entity';
+import { IPaginated } from 'src/shared/interfaces/paginated.interface';
 
 @Controller('clientes')
 export class ClientesController {
@@ -12,6 +13,8 @@ export class ClientesController {
   async search(
     @Param() { pageNumber }: PageParamDTO,
     @Query() { results }: ResultsQueryDTO,
-    @Query() filters: Partial<Cliente>,
-  ): Promise<void> {}
+    @Query() filters?: Partial<Cliente>,
+  ): Promise<IPaginated<Cliente>> {
+    return this.clientesService.search(pageNumber, results, filters);
+  }
 }

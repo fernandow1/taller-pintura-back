@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Cliente } from '../models/entities/cliente.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { IClient } from '../models/interfaces/client.interface';
+import { IPaginated } from 'src/shared/interfaces/paginated.interface';
 
 @Injectable()
 export class ClienteRepository {
@@ -14,17 +14,35 @@ export class ClienteRepository {
     page: number,
     resultSize: number,
     filters?: Partial<Cliente>,
-  ): Promise<IClient> {
+  ): Promise<IPaginated<Cliente>> {
     const query = this.repository
       .createQueryBuilder('clientes')
       .where('clientes.deletedAt IS NULL');
 
-    const [clients, count] = await query
+    filters?.nombre &&
+      query.andWhere('clientes.nombre LIKE :nombre', {
+        nombre: filters.nombre,
+      });
+    filters?.apellido &&
+      query.andWhere('clientes.apellido LIKE :apellido', {
+        apellido: filters.apellido,
+      });
+    filters?.nombre &&
+      query.andWhere('clientes.nombre LIKE :nombre', {
+        nombre: filters.nombre,
+      });
+    filters?.email &&
+      query.andWhere('clientes.email LIKE :email', { email: filters.email });
+
+    const [data, count] = await query
       .orderBy('clientes.createdAt', 'DESC')
       .skip(resultSize * (page - 1))
       .take(resultSize)
       .getManyAndCount();
 
-    return;
+    return {
+      data,
+      count,
+    };
   }
 }
