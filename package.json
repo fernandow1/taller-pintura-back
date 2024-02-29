@@ -18,13 +18,14 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "generateMigration": "npx typeorm migration:generate migration --dataSource=./dist/orm-config.js --outputJs=true",
+    "generateMigration": "npx typeorm migration:generate migration --dataSource=./dist/orm-config.js --outputJs=true --pretty=true",
     "runMigration": "npx typeorm migration:run --dataSource=./dist/orm-config.js"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^3.2.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/mapped-types": "^2.0.5",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^10.0.2",
     "class-transformer": "^0.5.1",
