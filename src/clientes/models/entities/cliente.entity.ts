@@ -1,4 +1,11 @@
-import { PrimaryGeneratedColumn, Column, Entity } from 'typeorm';
+import {
+  PrimaryGeneratedColumn,
+  Column,
+  Entity,
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+} from 'typeorm';
 import { CATEGORIAS } from '../enums/categorias.enum';
 
 @Entity('clientes', { database: 'taller_pintura' })
@@ -27,4 +34,22 @@ export class Cliente {
     default: CATEGORIAS.PRIVADO,
   })
   categoria: CATEGORIAS;
+
+  @CreateDateColumn({
+    type: 'timestamp',
+    name: 'createdAt',
+  })
+  createdAt: Date;
+
+  @UpdateDateColumn({
+    type: 'timestamp',
+    name: 'updatedAt',
+  })
+  updatedAt: Date;
+
+  @DeleteDateColumn({
+    type: 'timestamp',
+    name: 'deletedAt',
+  })
+  deletedAt: Date;
 }
