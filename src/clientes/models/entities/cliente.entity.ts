@@ -3,7 +3,7 @@ import { CATEGORIAS } from '../enums/categorias.enum';
 
 @Entity('clientes', { database: 'taller_pintura' })
 export class Cliente {
-  @PrimaryGeneratedColumn('increment', { name: 'id', type: 'int' })
+  @PrimaryGeneratedColumn({ name: 'id', type: 'int' })
   id: number;
 
   @Column('varchar', { nullable: true, length: 255 })
