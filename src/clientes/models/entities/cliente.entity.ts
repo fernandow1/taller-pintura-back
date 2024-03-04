@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
   DeleteDateColumn,
 } from 'typeorm';
-import { CATEGORIAS } from '../enums/categorias.enum';
+import { CATEGORIAS } from '@clientes-module/models/enums/categorias.enum';
 
 @Entity('clientes', { database: 'taller_pintura' })
 export class Cliente {

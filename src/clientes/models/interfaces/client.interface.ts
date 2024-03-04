@@ -1,4 +1,4 @@
-import { CATEGORIAS } from '../enums/categorias.enum';
+import { CATEGORIAS } from '@clientes-module/models/enums/categorias.enum';
 
 export interface IClient {
   id: number;

@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import { Cliente } from '../models/entities/cliente.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { IPaginated } from 'src/shared/interfaces/paginated.interface';
+import { Repository } from 'typeorm';
+import { Cliente } from '@clientes-module/models/entities/cliente.entity';
+import { IPaginated } from '@shared-module/interfaces/paginated.interface';
 
 @Injectable()
 export class ClienteRepository {

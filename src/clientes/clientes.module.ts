@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ClientesService } from './services/clientes.service';
-import { ClientesController } from './controllers/clientes.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Cliente } from './models/entities/cliente.entity';
-import { ClienteRepository } from './repositories/clientes.repository';
+import { ClientesService } from '@clientes-module/services/clientes.service';
+import { ClientesController } from '@clientes-module/controllers/clientes.controller';
+import { Cliente } from '@clientes-module/models/entities/cliente.entity';
+import { ClienteRepository } from '@clientes-module/repositories/clientes.repository';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Cliente])],
