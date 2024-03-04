@@ -1,7 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { ClienteRepository } from '../repositories/clientes.repository';
-import { IPaginated } from 'src/shared/interfaces/paginated.interface';
-import { Cliente } from '../models/entities/cliente.entity';
+import { ClienteRepository } from '@clientes-module/repositories/clientes.repository';
+import { IPaginated } from '@shared-module/interfaces/paginated.interface';
+import { Cliente } from '@clientes-module/models/entities/cliente.entity';
 
 @Injectable()
 export class ClientesService {
