@@ -1,7 +1,8 @@
 import { IsString, IsOptional, MaxLength, IsEnum } from 'class-validator';
-import { CATEGORIAS } from '../enums/categorias.enum';
+import { CATEGORIAS } from '@clientes-module/models/enums/categorias.enum';
+import { Cliente } from '@clientes-module/models/entities/cliente.entity';
 
-export class CreateClienteDto {
+export class CreateClienteDto extends Cliente {
   @IsString({
     message:
       'El formato del nombre es incorrecto. Por favor envie una cadena de caracteres valida.',
