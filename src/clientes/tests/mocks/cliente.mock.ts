@@ -25,6 +25,17 @@ export function mockCliente(): Cliente {
   return cliente;
 }
 
+export function mockClienteFilter(): Partial<Cliente> {
+  return new Cliente(
+    faker.helpers.enumValue(CATEGORIAS),
+    faker.internet.email(),
+    faker.string.alpha(),
+    faker.string.alpha(),
+    faker.person.lastName(),
+    faker.person.firstName(),
+  );
+}
+
 export function mockClienteArray(): Cliente[] {
   return [mockCliente(), mockCliente(), mockCliente()];
 }

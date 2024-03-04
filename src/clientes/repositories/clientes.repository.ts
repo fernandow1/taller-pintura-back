@@ -18,21 +18,22 @@ export class ClienteRepository {
     const query = this.repository
       .createQueryBuilder('clientes')
       .where('clientes.deletedAt IS NULL');
-
     filters?.nombre &&
       query.andWhere('clientes.nombre LIKE :nombre', {
-        nombre: filters.nombre,
+        nombre: `%${filters.nombre}%`,
       });
     filters?.apellido &&
       query.andWhere('clientes.apellido LIKE :apellido', {
-        apellido: filters.apellido,
+        apellido: `%${filters.apellido}%`,
       });
-    filters?.nombre &&
-      query.andWhere('clientes.nombre LIKE :nombre', {
-        nombre: filters.nombre,
+    filters?.razonSocial &&
+      query.andWhere('clientes.razonSocial LIKE :razonSocial', {
+        razonSocial: `%${filters.razonSocial}%`,
       });
     filters?.email &&
-      query.andWhere('clientes.email LIKE :email', { email: filters.email });
+      query.andWhere('clientes.email LIKE :email', {
+        email: `%${filters.email}%`,
+      });
 
     const [data, count] = await query
       .orderBy('clientes.createdAt', 'DESC')
