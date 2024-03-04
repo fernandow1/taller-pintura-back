@@ -1,15 +1,15 @@
 import { faker } from '@faker-js/faker';
 import { Repository } from 'typeorm';
-import { ClienteRepository } from '../repositories/clientes.repository';
 import { Test, TestingModule } from '@nestjs/testing';
-import { Cliente } from '../models/entities/cliente.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { ClienteRepository } from '@clientes-module/repositories/clientes.repository';
+import { Cliente } from '@clientes-module/models/entities/cliente.entity';
 import {
   mockClienteArray,
   mockClienteFilter,
   mockClienteInternalRepository,
-} from './mocks/cliente.mock';
-import { mockQueryBuilder } from '../../shared/tests/mocks/typeorm.mock';
+} from '@clientes-module/tests/mocks/cliente.mock';
+import { mockQueryBuilder } from '@shared-module/tests/mocks/typeorm.mock';
 
 describe('ClientesRepository', () => {
   let repository: ClienteRepository;
