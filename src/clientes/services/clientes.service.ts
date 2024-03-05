@@ -15,7 +15,6 @@ export class ClientesService {
     try {
       return this.clientRepository.search(page, pageSize, filters);
     } catch (error) {
-      console.log(error);
       throw new InternalServerErrorException();
     }
   }

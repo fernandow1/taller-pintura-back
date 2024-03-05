@@ -8,16 +8,13 @@ const config: Config = {
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
-  collectCoverageFrom: ['./src/**/*.(t|j)s'],
-  coveragePathIgnorePatterns: ['.module.ts', '.decorator.ts', '.mock.ts', '.dto.ts', '.enum.ts', '.entity.ts', '.interface.ts', 'routes.ts', 'main.ts', 'constants.ts', 'index.ts'],
-  coverageDirectory: './coverage',
   rootDir: './',
   preset: 'ts-jest',
-  testEnvironment: 'node',
-  setupFilesAfterEnv: ['./jest-setup-file.ts'],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>/',
-  }),
+  moduleNameMapper: {
+    "@clientes-module/(.*)": ["<rootDir>/src/clientes/$1"],
+    "@shared-module/(.*)": ["<rootDir>/src/shared/$1"],
+    "@main-module/(.*)": ["<rootDir>/src//$1"],
+  },
 };
 
 export default config;

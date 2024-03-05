@@ -21,6 +21,7 @@
     "paths": {
       "@clientes-module/*": ["src/clientes/*"],
       "@shared-module/*": ["src/shared/*"],
-    }
+      "@main-module/*": ["src/*"]
+    },
   }
 }
