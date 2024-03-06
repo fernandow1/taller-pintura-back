@@ -4,9 +4,12 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ClientesModule } from './clientes/clientes.module';
+import { RouterModule } from '@nestjs/core';
+import { routes } from '@shared-module/routes';
 
 @Module({
   imports: [
+    RouterModule.register(routes),
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
