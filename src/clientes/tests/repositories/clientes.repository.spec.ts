@@ -1,15 +1,15 @@
 import { faker } from '@faker-js/faker';
 import { Repository } from 'typeorm';
-import { ClienteRepository } from '../repositories/clientes.repository';
 import { Test, TestingModule } from '@nestjs/testing';
-import { Cliente } from '../models/entities/cliente.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { ClienteRepository } from '@clientes-module/repositories/clientes.repository';
+import { Cliente } from '@clientes-module/models/entities/cliente.entity';
 import {
   mockClienteArray,
   mockClienteFilter,
   mockClienteInternalRepository,
-} from './mocks/cliente.mock';
-import { mockQueryBuilder } from '../../shared/tests/mocks/typeorm.mock';
+} from '@clientes-module/tests/mocks/cliente.mock';
+import { mockQueryBuilder } from '@shared-module/tests/mocks/typeorm.mock';
 
 describe('ClientesRepository', () => {
   let repository: ClienteRepository;
@@ -89,6 +89,29 @@ describe('ClientesRepository', () => {
       expect(response.data.length).toBeGreaterThan(0);
       expect(response.count).toBeDefined();
       expect(response.count).toEqual(clientsCount);
+    });
+
+    it('should return an empty array if not found registers', async () => {
+      const page = faker.number.int();
+      const resultSize = faker.number.int({ min: 1, max: 50 });
+
+      internalRepository.createQueryBuilder = jest
+        .fn()
+        .mockImplementationOnce(() => {
+          return {
+            ...mockQueryBuilder({
+              getManyAndCountResponse: [[], 0],
+            }),
+          };
+        });
+
+      const response = await repository.search(page, resultSize);
+
+      expect(response).toBeDefined();
+      expect(response.data).toBeDefined();
+      expect(response.data.length).toEqual(0);
+      expect(response.count).toBeDefined();
+      expect(response.count).toEqual(0);
     });
   });
 });

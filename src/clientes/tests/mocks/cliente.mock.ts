@@ -1,7 +1,8 @@
 import { faker } from '@faker-js/faker';
-import { CreateClienteDto } from './../../models/dto/create-cliente.dto';
-import { Cliente } from './../../models/entities/cliente.entity';
-import { CATEGORIAS } from './../../models/enums/categorias.enum';
+import { CreateClienteDto } from '@clientes-module/models/dto/create-cliente.dto';
+import { Cliente } from '@clientes-module/models/entities/cliente.entity';
+import { CATEGORIAS } from '@clientes-module/models/enums/categorias.enum';
+import { IPaginated } from '@shared-module/interfaces/paginated.interface';
 
 export function mockCreateClienteDTO(): CreateClienteDto {
   return new CreateClienteDto(
@@ -29,8 +30,6 @@ export function mockClienteFilter(): Partial<Cliente> {
   return new Cliente(
     faker.helpers.enumValue(CATEGORIAS),
     faker.internet.email(),
-    faker.string.alpha(),
-    faker.string.alpha(),
     faker.person.lastName(),
     faker.person.firstName(),
   );
@@ -40,4 +39,17 @@ export function mockClienteArray(): Cliente[] {
   return [mockCliente(), mockCliente(), mockCliente()];
 }
 
+export function mockClientePaginated(): IPaginated<Cliente> {
+  return {
+    data: mockClienteArray(),
+    count: mockClienteArray().length,
+  };
+}
+
 export const mockClienteInternalRepository = {};
+export const mockClienteRepository = {
+  search: jest.fn().mockResolvedValueOnce(mockClientePaginated()),
+};
+export const mockClienteService = {
+  search: jest.fn().mockResolvedValueOnce(mockClientePaginated()),
+};
