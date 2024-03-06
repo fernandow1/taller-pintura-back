@@ -90,5 +90,28 @@ describe('ClientesRepository', () => {
       expect(response.count).toBeDefined();
       expect(response.count).toEqual(clientsCount);
     });
+
+    it('should return an empty array if not found registers', async () => {
+      const page = faker.number.int();
+      const resultSize = faker.number.int({ min: 1, max: 50 });
+
+      internalRepository.createQueryBuilder = jest
+        .fn()
+        .mockImplementationOnce(() => {
+          return {
+            ...mockQueryBuilder({
+              getManyAndCountResponse: [[], 0],
+            }),
+          };
+        });
+
+      const response = await repository.search(page, resultSize);
+
+      expect(response).toBeDefined();
+      expect(response.data).toBeDefined();
+      expect(response.data.length).toEqual(0);
+      expect(response.count).toBeDefined();
+      expect(response.count).toEqual(0);
+    });
   });
 });

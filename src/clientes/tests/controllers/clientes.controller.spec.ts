@@ -66,5 +66,22 @@ describe('ClientesController', () => {
       expect(response.count).toBeDefined();
       expect(response.count).toBeGreaterThan(0);
     });
+
+    it('should return an empty array if not found registers', async () => {
+      jest
+        .spyOn(service, 'search')
+        .mockResolvedValueOnce({ data: [], count: 0 });
+
+      const response = await controller.search(
+        mockPaginationDTO,
+        mockResultsDTO,
+      );
+
+      expect(response).toBeDefined();
+      expect(response.data).toBeDefined();
+      expect(response.data.length).toEqual(0);
+      expect(response.count).toBeDefined();
+      expect(response.count).toEqual(0);
+    });
   });
 });

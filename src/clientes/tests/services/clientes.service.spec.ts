@@ -60,5 +60,23 @@ describe('ClientesService', () => {
       expect(response.count).toBeGreaterThan(0);
       expect(repository.search).toBeCalledWith(page, pageSize, filters);
     });
+
+    it('should return an empty array if not found registers', async () => {
+      const page = faker.number.int();
+      const pageSize = faker.number.int({ min: 1, max: 50 });
+
+      jest
+        .spyOn(repository, 'search')
+        .mockResolvedValueOnce({ data: [], count: 0 });
+
+      const response = await service.search(page, pageSize);
+
+      expect(response).toBeDefined();
+      expect(response.data).toBeDefined();
+      expect(response.data.length).toEqual(0);
+      expect(response.count).toBeDefined();
+      expect(response.count).toEqual(0);
+      expect(repository.search).toBeCalledWith(page, pageSize, undefined);
+    });
   });
 });
