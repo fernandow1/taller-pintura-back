@@ -10,7 +10,7 @@ import { IPaginated } from '@shared-module/interfaces/paginated.interface';
 export class EmpleadosController {
   constructor(private readonly empleadosService: EmpleadosService) {}
 
-  @Get()
+  @Get("/page/:pageNumber")
   async search(
     @Param() { pageNumber }: PageParamDTO,
     @Query() { results }: ResultsQueryDTO,

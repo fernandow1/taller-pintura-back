@@ -16,7 +16,7 @@ export class EmpleadosService {
     try {
       return await this.repository.search(pageNumber, pageSize, filters);
     } catch (error) {
-      throw new InternalServerErrorException(error);
+      throw new InternalServerErrorException();
     }
   }
 
@@ -24,7 +24,7 @@ export class EmpleadosService {
     try {
       return await this.repository.save(createEmpleadoDto);
     } catch (error) {
-      throw new InternalServerErrorException(error);
+      throw new InternalServerErrorException();
     }
   }
 }
