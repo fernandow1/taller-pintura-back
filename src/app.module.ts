@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppController } from '@main-module/app.controller';
+import { AppService } from '@main-module/app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ClientesModule } from './clientes/clientes.module';
+import { ClientesModule } from '@main-module/clientes/clientes.module';
 import { RouterModule } from '@nestjs/core';
 import { routes } from '@shared-module/routes';
+import { EmpleadosModule } from '@main-module/empleados/empleados.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { routes } from '@shared-module/routes';
       entities: ['dist/**/models/*/*{.entity.ts,.entity.js}'],
     }),
     ClientesModule,
+    EmpleadosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
