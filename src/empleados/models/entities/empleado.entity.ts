@@ -6,7 +6,9 @@ import {
   UpdateDateColumn,
   Entity,
   Index,
+  OneToMany,
 } from 'typeorm';
+import { Usuario } from '@usuarios-module/models/entities/usuario.entity';
 
 @Index('dni-idx-UNIQUE', ['dni'], { unique: true })
 @Entity('empleados', { database: 'taller_pintura' })
@@ -65,4 +67,7 @@ export class Empleado {
     name: 'deletedAt',
   })
   deletedAt: Date;
+
+  @OneToMany(() => Usuario, (usuario) => usuario.empleado)
+  usuario: Usuario[];
 }

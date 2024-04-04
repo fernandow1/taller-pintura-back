@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { CreateEmpleadoDto } from '@main-module/empleados/dto/create-empleado.dto';
+import { CreateEmpleadoDto } from '@empleados-module/models/dto/create-empleado.dto';
 import { Empleado } from '@main-module/empleados/models/entities/empleado.entity';
 import { IPaginated } from '@shared-module/interfaces/paginated.interface';
 

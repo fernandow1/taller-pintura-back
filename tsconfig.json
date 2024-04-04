@@ -21,8 +21,9 @@
     "paths": {
       "@clientes-module/*": ["src/clientes/*"],
       "@shared-module/*": ["src/shared/*"],
+      "@empleados-module/*": ["src/empleados/*"],
+      "@usuarios-module/*": ["src/usuarios/*"],
       "@main-module/*": ["src/*"],
-      "@empleados-module/*": ["src/empleados/*"]
     },
   }
 }

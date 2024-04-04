@@ -10,7 +10,6 @@ import {
 } from '@empleados-module/tests/mocks/empleado.mock';
 import { Empleado } from '@empleados-module/models/entities/empleado.entity';
 import { InternalServerErrorException } from '@nestjs/common';
-import { mockClientePaginated } from '@clientes-module/tests/mocks/cliente.mock';
 
 describe('EmpleadosService', () => {
   let service: EmpleadosService;

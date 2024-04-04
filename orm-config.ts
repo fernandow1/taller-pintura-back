@@ -14,7 +14,7 @@ let connectionOptions: DataSourceOptions = {
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     entities: ['dist/**/models/*/*{.entity.js,.entity.ts}'],
-    migrations: ['dist/migration/*.js'],
+    migrations: ['./migration/*.js'],
 };
 
 export default new DataSource({
