@@ -48,7 +48,25 @@ export function mockUpdateUsuarioDTO(): UpdateUsuarioDTO {
   return usuarioDTO;
 }
 
-export const mockUsuarioService = {};
+export const mockUsuarioService = {
+  create: jest.fn().mockImplementation(async (user: Usuario) => {
+    const usuario = mockUsuario();
+    user.usuario && (usuario.usuario = user.usuario);
+    user.password && (usuario.password = user.password);
+    user.idEmpleado && (usuario.idEmpleado = user.idEmpleado);
+    return usuario;
+  }),
+  update: jest
+    .fn()
+    .mockImplementation(async (id: number, user: Partial<Usuario>) => {
+      const usuario = mockUsuario();
+      usuario.id = id;
+      user.usuario && (usuario.usuario = user.usuario);
+      user.password && (usuario.password = user.password);
+      user.idEmpleado && (usuario.idEmpleado = user.idEmpleado);
+      return usuario;
+    }),
+};
 
 export const mockUsuarioRepository = {
   search: jest.fn().mockResolvedValue(mockUsuarioPaginated()),
