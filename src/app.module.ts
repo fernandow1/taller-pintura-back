@@ -7,6 +7,7 @@ import { ClientesModule } from '@main-module/clientes/clientes.module';
 import { RouterModule } from '@nestjs/core';
 import { routes } from '@shared-module/routes';
 import { EmpleadosModule } from '@main-module/empleados/empleados.module';
+import { UsuariosModule } from '@main-module/usuarios/usuarios.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { EmpleadosModule } from '@main-module/empleados/empleados.module';
     }),
     ClientesModule,
     EmpleadosModule,
+    UsuariosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
