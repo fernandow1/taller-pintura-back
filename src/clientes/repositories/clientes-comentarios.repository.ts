@@ -39,4 +39,12 @@ export class ClientesComentariosRepository {
   ): Promise<ClienteComentario> {
     return this.repository.save(comentario);
   }
+
+  async findById(id: number): Promise<ClienteComentario> {
+    return this.repository.findOneOrFail({
+      where: {
+        id,
+      },
+    });
+  }
 }

@@ -3,6 +3,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -11,8 +12,9 @@ import { Cliente } from '@clientes-module/models/entities/cliente.entity';
 
 @Entity('clientes_comentarios', { database: 'taller_pintura' })
 export class ClienteComentario {
-  constructor(comentario: string) {
+  constructor(comentario: string, idCliente: number) {
     this.comentario = comentario;
+    this.idCliente = idCliente;
   }
 
   @PrimaryGeneratedColumn({ name: 'id', type: 'int' })
@@ -43,5 +45,6 @@ export class ClienteComentario {
   deletedAt: Date;
 
   @ManyToOne(() => Cliente, (cliente) => cliente.comentarios)
+  @JoinColumn({ name: 'id_cliente', referencedColumnName: 'id' })
   cliente: Cliente;
 }
