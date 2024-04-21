@@ -45,3 +45,13 @@ export const mockClienteComentariosInternalRepository = {
   save: jest.fn().mockResolvedValue(mockClienteComentario()),
   findOneOrFail: jest.fn().mockResolvedValue(mockClienteComentario()),
 };
+
+export const mockClienteComentarioRepository = {
+  findById: jest.fn().mockImplementation(async (id: number) => {
+    const clienteComentario = mockClienteComentario();
+    clienteComentario.id = id;
+    return clienteComentario;
+  }),
+  search: jest.fn().mockResolvedValue(mockClienteComentarioPaginated()),
+  save: jest.fn().mockResolvedValue(mockClienteComentario()),
+};
