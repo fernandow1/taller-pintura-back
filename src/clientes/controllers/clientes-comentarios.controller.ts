@@ -1,7 +1,17 @@
 import { CreateClienteComentarioDTO } from '@clientes-module/models/dto/create-cliente-comentario.dto';
+import { UpdateClienteComentarioDTO } from '@clientes-module/models/dto/update-cliente-comentario.dto';
 import { ClienteComentario } from '@clientes-module/models/entities/cliente-comentario.entity';
 import { ClientesComentariosService } from '@clientes-module/services/clientes-comentarios.service';
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { IPaginated } from '@shared-module/interfaces/paginated.interface';
 import { PageParamDTO } from '@shared-module/models/dtos/page-param.dto';
 import { ResultsQueryDTO } from '@shared-module/models/dtos/results-query.dto';
@@ -26,5 +36,13 @@ export class ClientesComentariosController {
     @Body() dto: CreateClienteComentarioDTO,
   ): Promise<ClienteComentario> {
     return this.clienteComentarioService.create(dto);
+  }
+
+  @Put(':id')
+  async update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() dto: UpdateClienteComentarioDTO,
+  ): Promise<ClienteComentario> {
+    return this.clienteComentarioService.update(id, dto);
   }
 }

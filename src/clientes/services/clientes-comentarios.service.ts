@@ -41,7 +41,7 @@ export class ClientesComentariosService {
   async update(
     id: number,
     dto: UpdateClienteComentarioDTO,
-  ): Promise<Partial<ClienteComentario>> {
+  ): Promise<ClienteComentario> {
     try {
       await this.findById(id);
 

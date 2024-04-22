@@ -91,7 +91,7 @@ describe('ClientesComentariosService', () => {
       expect(repository.search).toBeCalledWith(pageNumber, pageSize, undefined);
     });
 
-    it('should return an empty array without applt filters', async () => {
+    it('should return an empty array without apply filters', async () => {
       jest
         .spyOn(repository, 'search')
         .mockResolvedValueOnce({ data: [], count: 0 });
