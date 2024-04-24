@@ -5,7 +5,7 @@ import { ResultsQueryDTO } from '@shared-module/models/dtos/results-query.dto';
 import { Cliente } from '@clientes-module/models/entities/cliente.entity';
 import { IPaginated } from '@shared-module/interfaces/paginated.interface';
 
-@Controller('clientes')
+@Controller()
 export class ClientesController {
   constructor(private readonly clientesService: ClientesService) {}
 

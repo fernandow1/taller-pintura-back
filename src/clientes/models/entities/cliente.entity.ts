@@ -5,8 +5,10 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { CATEGORIAS } from '@clientes-module/models/enums/categorias.enum';
+import { ClienteComentario } from '@clientes-module/models/entities/cliente-comentario.entity';
 
 @Entity('clientes', { database: 'taller_pintura' })
 export class Cliente {
@@ -67,4 +69,10 @@ export class Cliente {
     name: 'deletedAt',
   })
   deletedAt: Date;
+
+  @OneToMany(
+    () => ClienteComentario,
+    (clienteComentario) => clienteComentario.cliente,
+  )
+  comentarios: ClienteComentario[];
 }
