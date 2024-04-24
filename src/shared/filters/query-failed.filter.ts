@@ -18,7 +18,8 @@ export class QueryFailedFilter implements ExceptionFilter {
     );
 
     return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-      message: 'Ha ocurrido un error en la base de datos.',
+      message:
+        'Ha ocurrido un error en la base de datos. Por favor intente nuevamente mas tarde.',
     });
   }
 }
