@@ -4,10 +4,11 @@ import { AppService } from '@main-module/app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ClientesModule } from '@main-module/clientes/clientes.module';
-import { RouterModule } from '@nestjs/core';
+import { APP_FILTER, RouterModule } from '@nestjs/core';
 import { routes } from '@shared-module/routes';
 import { EmpleadosModule } from '@main-module/empleados/empleados.module';
 import { UsuariosModule } from '@main-module/usuarios/usuarios.module';
+import { QueryFailedFilter } from '@shared-module/filters/query-failed.filter';
 
 @Module({
   imports: [
@@ -30,6 +31,12 @@ import { UsuariosModule } from '@main-module/usuarios/usuarios.module';
     UsuariosModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_FILTER,
+      useClass: QueryFailedFilter,
+    },
+  ],
 })
 export class AppModule {}
