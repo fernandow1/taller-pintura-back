@@ -11,13 +11,9 @@ name: ESLint
 
 on:
   push:
-    branches: 
-      - main
-      - desarrollo      
+    branches: ["main","desarrollo"]     
   pull_request:    
-    branches: 
-      - main
-      - desarrollo      
+    branches: ["main","desarrollo"]  
 
 jobs:
   prettier:
