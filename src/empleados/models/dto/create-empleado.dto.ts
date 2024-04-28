@@ -34,23 +34,9 @@ export class CreateEmpleadoDto extends Empleado {
   @IsNotEmpty({ message: 'El email no puede estar vacio.' })
   email: string;
 
-  @IsDateString(
-    { strict: true },
-    {
-      message:
-        'El formato de la fecha de nacimiento es incorrecto. Por favor envie una cadena de caracteres valida.',
-    },
-  )
   @IsNotEmpty({ message: 'La fecha de nacimiento no puede estar vacia.' })
   fechaNacimiento: string;
 
-  @IsDateString(
-    { strict: true },
-    {
-      message:
-        'El formato de la fecha de inicio de empleo es incorrecto. Por favor envie una cadena de caracteres valida.',
-    },
-  )
   @IsNotEmpty({ message: 'La fecha de inicio de empleo no puede estar vacia.' })
   fechaInicioEmpleo: string;
 }
