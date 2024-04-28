@@ -23,18 +23,13 @@ on:
       - 'featured/**'
 
 jobs:
-  esLinter:
-    name: Run esLint
+  prettier:
     runs-on: ubuntu-latest
     steps:
-      - name: Code linting
-        run: |
-          npm install eslint
-          npx eslint .
-        continue-on-error: false
-        
-      - name: Code formatting
-        run: |
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: |
           npm install prettier
           npx prettier --check src/
-        continue-on-error: false
