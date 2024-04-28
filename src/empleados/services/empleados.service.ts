@@ -14,11 +14,7 @@ export class EmpleadosService {
     pageSize: number,
     filters?: Partial<Empleado>,
   ): Promise<IPaginated<Empleado>> {
-    try {
-      return await this.repository.search(pageNumber, pageSize, filters);
-    } catch (error) {
-      throw new InternalServerErrorException();
-    }
+    return await this.repository.search(pageNumber, pageSize, filters);
   }
 
   async create(createEmpleadoDto: CreateEmpleadoDto): Promise<Empleado> {
