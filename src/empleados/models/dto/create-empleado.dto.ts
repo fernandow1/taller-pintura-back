@@ -37,10 +37,6 @@ export class CreateEmpleadoDto extends Empleado {
   @IsNotEmpty({ message: 'La fecha de nacimiento no puede estar vacia.' })
   fechaNacimiento: string;
 
-
-
-
-  
   @IsNotEmpty({ message: 'La fecha de inicio de empleo no puede estar vacia.' })
   fechaInicioEmpleo: string;
 }
