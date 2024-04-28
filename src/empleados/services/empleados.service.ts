@@ -3,6 +3,7 @@ import { CreateEmpleadoDto } from '@empleados-module/models/dto/create-empleado.
 import { EmpleadoRepository } from '@empleados-module/repositories/empleados.repository';
 import { Empleado } from '@empleados-module/models/entities/empleado.entity';
 import { IPaginated } from '@shared-module/interfaces/paginated.interface';
+import { EmpleadoNotSavedException } from '@empleados-module/exceptions/empleado-not-saved.exception';
 
 @Injectable()
 export class EmpleadosService {
@@ -24,7 +25,7 @@ export class EmpleadosService {
     try {
       return await this.repository.save(createEmpleadoDto);
     } catch (error) {
-      throw new InternalServerErrorException();
+      throw new EmpleadoNotSavedException(error);
     }
   }
 }
