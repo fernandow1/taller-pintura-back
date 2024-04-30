@@ -3,6 +3,7 @@ import {
   IsNotEmpty,
   IsNumber,
   IsString,
+  IsStrongPassword,
   MaxLength,
   MinLength,
 } from 'class-validator';
@@ -11,10 +12,6 @@ export class CreateUsuarioDTO extends Usuario {
   @MaxLength(50, {
     message:
       'La cantidad maxima de caracteres para el usuario es de $constraint1',
-  })
-  @MinLength(3, {
-    message:
-      'La cantidad de caracteres minima para el usuario es de $constraint1',
   })
   @IsString({
     message:
@@ -27,10 +24,13 @@ export class CreateUsuarioDTO extends Usuario {
     message:
       'La cantidad maxima de caracteres para la clave es de $constraint1',
   })
-  @MinLength(8, {
-    message:
-      'La cantidad de caracteres minima para la clave es de $constraint1',
-  })
+  @IsStrongPassword(
+    { minLength: 3, minNumbers: 2, minUppercase: 1 },
+    {
+      message:
+        'La clave debe tener al menos tres caracteres, debe contar con al menos una letra mayuscula y dos numeros. Por favor proporcione una clave valida',
+    },
+  )
   @IsString({
     message:
       'El formato de la clave no es valido. Por favor envie una cadena de caracteres valida.',
