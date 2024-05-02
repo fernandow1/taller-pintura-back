@@ -27,7 +27,7 @@ export class Usuario {
   @Column('varchar', { length: 50, nullable: false })
   usuario: string;
 
-  @Exclude()
+  @Exclude({ toPlainOnly: true })
   @Column('varchar', { length: 255, nullable: false })
   password: string;
 

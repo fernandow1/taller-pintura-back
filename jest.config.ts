@@ -9,6 +9,7 @@ const config: Config = {
   rootDir: './',
   preset: 'ts-jest',
   moduleNameMapper: {
+    "@auth-module/(.*)": ["<rootDir>/src/auth/$1"],
     "@clientes-module/(.*)": ["<rootDir>/src/clientes/$1"],
     "@shared-module/(.*)": ["<rootDir>/src/shared/$1"],
     "@empleados-module/(.*)": ["<rootDir>/src/empleados/$1"],
