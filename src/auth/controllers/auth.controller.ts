@@ -1,8 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { LoginDTO } from '../models/dtos/login.dto';
-import { Usuario } from '@usuarios-module/models/entities/usuario.entity';
-import { AuthService } from '../services/auth.service';
-import { IAccessToken } from '../models/interfaces/access-token.interface';
+import { LoginDTO } from '@auth-module/models/dtos/login.dto';
+import { AuthService } from '@auth-module/services/auth.service';
+import { IAccessToken } from '@auth-module/models/interfaces/access-token.interface';
 
 @Controller()
 export class AuthController {

@@ -5,8 +5,6 @@ import { UsuariosModule } from '@usuarios-module/usuarios.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtEstrategy } from './strategies/jwt.strategy';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Usuario } from '@usuarios-module/models/entities/usuario.entity';
 
 @Module({
   imports: [
