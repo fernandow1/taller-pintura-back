@@ -6,6 +6,7 @@ import { compare } from 'bcrypt';
 import { IAppPayload } from '@auth-module/models/interfaces/app-payload.interface';
 import { JwtService } from '@nestjs/jwt';
 import { IAccessToken } from '@auth-module/models/interfaces/access-token.interface';
+import { InvalidCredentialsException } from '@auth-module/exceptions/invalid-credentials.exception';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +17,6 @@ export class AuthService {
 
   async login(credentials: LoginDTO): Promise<IAccessToken> {
     const user = await this.validateCredentials(credentials);
-
     const payload: IAppPayload = {
       id: user.id,
       nombreApellido: `${user.empleado.nombre} ${user.empleado.apellido}`,
@@ -40,9 +40,7 @@ export class AuthService {
 
       throw new Error();
     } catch (error) {
-      // Crear una excepcion adecuada para las credenciales incorrectas
-      console.log(error);
-      throw new BadRequestException();
+      throw new InvalidCredentialsException(error);
     }
   }
 

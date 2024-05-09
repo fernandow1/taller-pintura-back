@@ -1,3 +1,4 @@
+import { mockEmpleado } from '@empleados-module/tests/mocks/empleado.mock';
 import { faker } from '@faker-js/faker';
 import { IPaginated } from '@shared-module/interfaces/paginated.interface';
 import { CreateUsuarioDTO } from '@usuarios-module/models/dtos/create-usuario.dto';
@@ -12,6 +13,7 @@ export function mockUsuario(user?: Partial<Usuario>): Usuario {
   );
   usuario.id = faker.number.int({ min: 1, max: 100 });
   user?.usuario && (usuario.usuario = user.usuario);
+  usuario.empleado = mockEmpleado();
   return usuario;
 }
 
@@ -66,6 +68,7 @@ export const mockUsuarioService = {
       user.idEmpleado && (usuario.idEmpleado = user.idEmpleado);
       return usuario;
     }),
+  findByUsuario: jest.fn().mockReturnThis(),
 };
 
 export const mockUsuarioRepository = {
