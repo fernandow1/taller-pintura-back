@@ -1,20 +1,10 @@
 import { Usuario } from '@usuarios-module/models/entities/usuario.entity';
-import {
-  IsNotEmpty,
-  IsNumber,
-  IsString,
-  MaxLength,
-  MinLength,
-} from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
 
 export class CreateUsuarioDTO extends Usuario {
   @MaxLength(50, {
     message:
       'La cantidad maxima de caracteres para el usuario es de $constraint1',
-  })
-  @MinLength(3, {
-    message:
-      'La cantidad de caracteres minima para el usuario es de $constraint1',
   })
   @IsString({
     message:
@@ -26,10 +16,6 @@ export class CreateUsuarioDTO extends Usuario {
   @MaxLength(255, {
     message:
       'La cantidad maxima de caracteres para la clave es de $constraint1',
-  })
-  @MinLength(8, {
-    message:
-      'La cantidad de caracteres minima para la clave es de $constraint1',
   })
   @IsString({
     message:

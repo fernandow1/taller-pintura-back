@@ -10,6 +10,7 @@ import { EmpleadosModule } from '@main-module/empleados/empleados.module';
 import { UsuariosModule } from '@main-module/usuarios/usuarios.module';
 import { QueryFailedFilter } from '@shared-module/filters/query-failed.filter';
 import { ProductosModule } from './productos/productos.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { ProductosModule } from './productos/productos.module';
     EmpleadosModule,
     UsuariosModule,
     ProductosModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [
