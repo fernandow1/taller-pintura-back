@@ -57,6 +57,15 @@ export class UsuariosService {
     }
   }
 
+  async findByUsuario(usuario: string): Promise<Usuario> {
+    try {
+      const user = await this.usuarioRepository.findByUserName(usuario);
+      return user;
+    } catch (error) {
+      throw new NotFoundException();
+    }
+  }
+
   async create(usuarioDTO: CreateUsuarioDTO): Promise<Usuario> {
     usuarioDTO.password = await hash(usuarioDTO.password, 10);
     return this.save(usuarioDTO);

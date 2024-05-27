@@ -19,6 +19,7 @@
     "noFallthroughCasesInSwitch": false,
     "resolveJsonModule": true,
     "paths": {
+      "@auth-module/*": ["src/auth/*"],
       "@clientes-module/*": ["src/clientes/*"],
       "@shared-module/*": ["src/shared/*"],
       "@empleados-module/*": ["src/empleados/*"],
