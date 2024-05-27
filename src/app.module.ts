@@ -9,6 +9,7 @@ import { routes } from '@shared-module/routes';
 import { EmpleadosModule } from '@main-module/empleados/empleados.module';
 import { UsuariosModule } from '@main-module/usuarios/usuarios.module';
 import { QueryFailedFilter } from '@shared-module/filters/query-failed.filter';
+import { ProductosModule } from './productos/productos.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { QueryFailedFilter } from '@shared-module/filters/query-failed.filter';
     ClientesModule,
     EmpleadosModule,
     UsuariosModule,
+    ProductosModule,
   ],
   controllers: [AppController],
   providers: [
