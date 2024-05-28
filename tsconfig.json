@@ -24,6 +24,7 @@
       "@shared-module/*": ["src/shared/*"],
       "@empleados-module/*": ["src/empleados/*"],
       "@usuarios-module/*": ["src/usuarios/*"],
+      "@productos-module/*": ["src/productos/*"],
       "@main-module/*": ["src/*"],
     },
   }

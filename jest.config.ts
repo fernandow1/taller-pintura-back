@@ -14,6 +14,7 @@ const config: Config = {
     "@shared-module/(.*)": ["<rootDir>/src/shared/$1"],
     "@empleados-module/(.*)": ["<rootDir>/src/empleados/$1"],
     "@usuarios-module/(.*)": ["<rootDir>/src/usuarios/$1"],
+    "@productos-module/(.*)": ["<rootDir>/src/productos/$1"],
     "@main-module/(.*)": ["<rootDir>/src//$1"],
   },
 };
