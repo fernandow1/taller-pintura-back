@@ -9,7 +9,7 @@ import { routes } from '@shared-module/routes';
 import { EmpleadosModule } from '@main-module/empleados/empleados.module';
 import { UsuariosModule } from '@main-module/usuarios/usuarios.module';
 import { QueryFailedFilter } from '@shared-module/filters/query-failed.filter';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from '@main-module/auth/auth.module';
 
 @Module({
   imports: [

@@ -1,9 +1,19 @@
 {
   "moduleFileExtensions": ["js", "json", "ts"],
-  "rootDir": ".",
+  "rootDir": "./",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "transformIgnorePatterns": ["^.+\\.js$"],
+  "preset": "ts-jest",
+  "moduleNameMapper": {
+    "@main-module/(.*)": ["<rootDir>/../src/$1"],
+    "@auth-module/(.*)": ["<rootDir>/../src/auth/$1"],
+    "@clientes-module/(.*)": ["<rootDir>/../src/clientes/$1"],
+    "@shared-module/(.*)": ["<rootDir>/../src/shared/$1"],
+    "@empleados-module/(.*)": ["<rootDir>/../src/empleados/$1"],
+    "@usuarios-module/(.*)": ["<rootDir>/../src/usuarios/$1"]
   }
 }
