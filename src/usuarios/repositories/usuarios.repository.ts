@@ -45,6 +45,13 @@ export class UsuarioRepository {
     });
   }
 
+  async findByUserName(usuario: string): Promise<Usuario> {
+    return this.repository.findOneOrFail({
+      where: { usuario },
+      relations: { empleado: true },
+    });
+  }
+
   async softDelete(id: number): Promise<void> {
     await this.repository.softDelete(id);
   }
