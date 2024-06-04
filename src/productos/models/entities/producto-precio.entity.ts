@@ -4,6 +4,7 @@ import {
   DeleteDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -49,11 +50,10 @@ export class ProductoPrecio {
   })
   deletedAt: Date | null;
 
-  @OneToOne(() => Producto)
-  @JoinColumn({ name: 'id_producto', referencedColumnName: 'id' })
-  producto: Producto;
-
   @OneToOne(() => Monedas)
   @JoinColumn({ name: 'id_moneda', referencedColumnName: 'id' })
   moneda: Monedas;
+
+  @ManyToOne(() => Producto, (producto) => producto.precios)
+  producto: Producto;
 }
